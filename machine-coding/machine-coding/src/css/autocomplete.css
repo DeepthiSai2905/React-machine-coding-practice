@@ -1,0 +1,29 @@
+.search-input{
+    width: 500px;
+    padding: 10px;
+    margin:5px;
+}
+.results-container{
+    width: 500px;
+    margin: auto;
+    border:1px solid black;
+    padding:5px;
+    text-align: left;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.dropdown-item{
+    display: block;
+    padding: 5px;
+}
+.dropdown-item:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+.filtered-container{
+    margin:15px;
+    width: 500px;
+}
+.selected-item{
+    background: pink;
+}
