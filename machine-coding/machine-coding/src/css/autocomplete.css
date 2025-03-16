@@ -23,7 +23,10 @@
 .filtered-container{
     margin:15px;
     width: 500px;
+    background-color: aqua;
 }
 .selected-item{
+    width: 500px;
+    height: 20px;
     background: pink;
 }

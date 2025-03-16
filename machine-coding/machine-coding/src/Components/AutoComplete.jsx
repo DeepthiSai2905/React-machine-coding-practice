@@ -7,14 +7,14 @@ const AutoComplete = () => {
     const [input, setInput]= useState('');
     const [showResults, setShowResults] = useState(false);
 
+    /*
+     Improve performance -  Debouncing - instead of making api call on every key stroke, call api when user stops typing
+    
+    */
     useEffect(()=>{
         fetchData();
     },[input])
 
-    useEffect(() => {
-        console.log("Updated selectedItems:", selectedItems);
-    }, [selectedItems]);
-    
     const fetchData = async() => {
         try{
             const apiCall = `https://dummyjson.com/recipes/search?q=${input}`
@@ -30,9 +30,7 @@ const AutoComplete = () => {
     const addSelectedItem = (item) => {
         setselectedItems((prev)=>[...prev,item]);
         setInput(''); // Clear input after selection
-        setShowResults(false); 
-
-        console.log("selecteditems",selectedItems);
+        setShowResults(false);
     }
 
     const removeItem = (id)=>{
@@ -49,25 +47,24 @@ const AutoComplete = () => {
                 value={input}
                 onChange={(e)=>setInput(e.target.value)}
                 onFocus={()=>setShowResults(true)}
-                onBlur={()=>setShowResults(false)}
+                // onBlur={()=> setTimeout (()=>setShowResults(false),2000)}
             />
             {results.length>0 && showResults && <div className='results-container'>
                 {results.map((item)=>(
                     <span key={item.id} className='dropdown-item' onClick={()=>addSelectedItem(item)}>{item.name}</span>
                 ))
                 }
-                {selectedItems.length>0 && 
-                  <div className='filtered-container'> 
-                    {selectedItems.map((item)=>(
-                        <span key={item.id} className='selected-item'>
-                            {item.name}<button onClick={()=>removeItem(item.id)}>Remove</button>
-
-                        </span>
-                            
-                    ))}
-                  </div>
-                }
                </div>
+            }
+            {selectedItems.length>0 && 
+                <div className='filtered-container'> 
+                {selectedItems.map((item)=>(
+                    <span key={item.id} className='selected-item'>
+                        {item.name}<button onClick={()=>removeItem(item.id)}>Remove</button>
+                    </span>
+                        
+                ))}
+                </div>
             }
         </div>
     )
