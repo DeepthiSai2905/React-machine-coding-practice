@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef} from 'react'
 import '../css/autocomplete.css';
 
+// should be solved in 30min max - whole component and optimisations
 const AutoComplete = () => {
     const [results, setResults] = useState([]);
     const [selectedItems, setselectedItems] = useState([]);
