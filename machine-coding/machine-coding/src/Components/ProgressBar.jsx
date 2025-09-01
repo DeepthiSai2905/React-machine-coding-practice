@@ -17,7 +17,7 @@ const ProgressBar = ({progress}) => {
     <div className='outer'> 
         <div className='inner' 
             style={{
-                // width: `${progress}%`}}
+                // width: `${progress}%`}} - repaint the whole css not good practice
                 transform: `translateX(${animatedProgress-100}%)`,
             }}
             role="progressbar"

@@ -1,0 +1,14 @@
+.product-details{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 200px;
+    margin: 15px;
+}
+.product-img{
+    width: 200px;
+}
+.products-list{
+    display: flex;
+    flex-wrap: wrap;
+}
